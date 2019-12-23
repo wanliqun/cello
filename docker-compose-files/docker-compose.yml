@@ -64,7 +64,7 @@ services:
       - BROKER=amqp://$RABBITMQ_DEFAULT_USER:$RABBITMQ_DEFAULT_PASS@rabbitmq:5672/$RABBITMQ_DEFAULT_VHOST
       - BACKEND=amqp://$RABBITMQ_DEFAULT_USER:$RABBITMQ_DEFAULT_PASS@rabbitmq:5672/$RABBITMQ_DEFAULT_VHOST
     ports:
-      - "8080:8080"
+      - "8081:8080"
     volumes:
       - $ROOT_PATH/src/agent/docker/_compose_files:/cello
 
@@ -78,7 +78,7 @@ services:
       - dashboard_mongo
       - operator-dashboard
     ports:
-      - "8081:8081"
+      - "8082:8081"
     environment:
       - NODE_ENV=production
       - RESTFUL_SERVER=operator-dashboard:8080
@@ -111,8 +111,8 @@ services:
       - MONGODB_PORT=27017
       - DEBUG=$DEV    # in debug mode, service will auto-restart
       - LOG_LEVEL=$LOG_LEVEL  # what level log will be output
-    ports:
-      - "80:80"
+    #ports:
+    #  - "80:80"
 
   # cello watchdog service
   watchdog:
